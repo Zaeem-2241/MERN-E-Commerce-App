@@ -1,17 +1,20 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+const API = import.meta.env.VITE_API_URL;
 
 export const fetchProducts = createAsyncThunk(
   "products/fetch",
   async (params, thunkAPI) => {
     try {
-      const query = new URLSearchParams(params).toString();
-    //   console.log(query);
-
+      // const query = new URLSearchParams(params).toString();
+      //   console.log(query);
+      
       const res = await axios.get(
-        `http://localhost:5000/api/products?${query}`,
+        `${API}/api/products?${API}`
+        // `http://localhost:5000/api/products?${query}`,
       );
-      console.log(res);
+      // console.log(res);
+      // console.log(API);
 
       return res.data;
     } catch (error) {
@@ -23,15 +26,29 @@ export const fetchProductDetails = createAsyncThunk(
   "products/details",
   async (id, thunkAPI) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/products/${id}`);
-      console.log(res.data);
-      
+      const res = await axios.get(
+        `${API}/api/products/${id}`
+      );
+
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(error.response?.data);
     }
-  },
+  }
 );
+// export const fetchProductDetails = createAsyncThunk(
+//   "products/details",
+//   async (id, thunkAPI) => {
+//     try {
+//       const res = await axios.get(`http://localhost:5000/api/products/${id}`);
+//       console.log(res.data);
+      
+//       return res.data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.response.data);
+//     }
+//   },
+// );
 
 const productSlice = createSlice({
   name: "product",
