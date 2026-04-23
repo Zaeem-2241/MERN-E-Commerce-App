@@ -19,9 +19,9 @@ function ProductDetail() {
   }
 
   return (
-    <div className="bg-red-500 py-16 min-h-screen m-16">
+    <div className=" py-6  min-h-screen m-16">
       
-      <div className="max-w-6xl mx-auto mt-16 bg-white  rounded-2xl shadow-lg py-16 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="max-w-6xl mx-auto mt-16 bg-green-100  rounded-2xl shadow-lg py-16 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* 🖼️ IMAGE SECTION */}
         <div className="flex justify-center items-center bg-gray-50 rounded-xl p-4">
           <img
