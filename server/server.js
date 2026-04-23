@@ -10,6 +10,8 @@ import orderRoutes from "./routes/orderRoutes.js";
 // import productByIdRoutes from "./routes/productRoutes.js";
 // import Stripe from "stripe";
 import cors from "cors";
+import dns from 'dns';
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 
 
 connectDB();
