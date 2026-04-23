@@ -10,7 +10,7 @@ import { Children } from "react";
 import Product from "./pages/Product";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
-import ProductDetail from "./pages/productDetails";
+import ProductDetail from "./pages/ProductDetails";
 import AdminRoute from "./components/adminRoute";
 import AdminOrders from "./pages/AdminOrders";
 
