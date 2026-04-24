@@ -6,15 +6,15 @@ export const fetchProducts = createAsyncThunk(
   "products/fetch",
   async (params, thunkAPI) => {
     try {
-      // const query = new URLSearchParams(params).toString();
-      //   console.log(query);
+      const query = new URLSearchParams(params).toString();
+        console.log(query);
       
       const res = await axios.get(
-        `${API}/api/products?${API}`
+        `${API}/api/products?${query}`
         // `http://localhost:5000/api/products?${query}`,
       );
-      // console.log(res);
-      // console.log(API);
+      console.log(res);
+      console.log(API);
 
       return res.data;
     } catch (error) {

@@ -16,7 +16,7 @@ function Product() {
   const [page, setPage] = useState(1);
   const lastItemRef = useRef(null);
   const { products, isLoading, pages } = useSelector((state) => state.product);
-  console.log(page);
+  console.log(products);
 
   // const [hasMore, setHasMore] = useState(true);
   // console.log(products);

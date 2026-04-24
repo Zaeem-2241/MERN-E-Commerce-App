@@ -1,43 +1,42 @@
 import dotenv from "dotenv";
 dotenv.config();
+
 import express from "express";
 import connectDB from "./config/db.js";
+import cors from "cors";
+
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
-// import productByIdRoutes from "./routes/productRoutes.js";
-// import Stripe from "stripe";
-import cors from "cors";
-import dns from 'dns';
-dns.setServers(['8.8.8.8', '8.8.4.4']);
-
 
 connectDB();
-// console.log("jwt", process.env.STRIPE_SECRET_KEY);
-
 
 const app = express();
-// app.use(cors({
-//     origin : "http://localhost:5173",
-//     credentials : true,
-// }))
+
+// ✅ Correct CORS
 app.use(cors({
-  origin: "https://your-frontend-url.onrender.com"
+  origin: "https://mern-e-commerce-app-rx3m-loulbgzrt-zaeem-2241s-projects.vercel.app",
+  credentials: true
 }));
+
 app.use(express.json());
+
+// ✅ API routes
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/orders", orderRoutes);
 
-app.get("/", (req, res) => {
-    res.send("api running...");
+// ✅ 404 fallback
+app.use((req, res) => {
+  res.status(404).json({ message: "API route not found" });
 });
+
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, ()=> {
-    console.log("server is running on port 5000");
-    
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
