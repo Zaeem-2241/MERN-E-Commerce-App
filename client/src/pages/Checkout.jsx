@@ -7,7 +7,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../features/cart/cartSlice";
-
+const API = import.meta.env.VITE_API_URL;
 function Checkout() {
   const stripe = useStripe();
   const elements = useElements();
@@ -43,7 +43,7 @@ function Checkout() {
 
     // 1. Create PaymentIntent
     const { data } = await axios.post(
-      "http://localhost:5000/api/payment/create-payment-intent",
+      `${API}/api/payment/create-payment-intent`,
       { amount: totalAmount }
     );
 
@@ -59,7 +59,7 @@ function Checkout() {
     // 3. If success → SAVE ORDER 🔥
     if (result.paymentIntent.status === "succeeded") {
       await axios.post(
-        "http://localhost:5000/api/orders",
+        `${API}/api/orders`,
         {
           orderItems: cartItems,
           totalAmount,

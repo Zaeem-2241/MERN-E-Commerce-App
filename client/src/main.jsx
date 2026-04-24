@@ -7,10 +7,8 @@ import App from "./App.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { loadStripe } from "@stripe/stripe-js";
-
-const stripePromise = loadStripe(
-  "",
-);
+const publishableKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY;
+const stripePromise = loadStripe(publishableKey);
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
