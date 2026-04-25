@@ -17,7 +17,9 @@ const app = express();
 
 // ✅ Correct CORS
 app.use(cors({
-  origin: "https://mern-e-commerce-app-rx3m-zaeem-2241s-projects.vercel.app/",
+  origin: [
+    "https://mern-e-commerce-app-rx3m-zaeem-2241s-projects.vercel.app"
+  ],
   credentials: true
 }));
 
